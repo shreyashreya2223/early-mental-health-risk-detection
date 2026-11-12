@@ -71,7 +71,8 @@ h2{font-size:17px}h3{font-size:15px}
 .btn{font:inherit;font-weight:600;font-size:14px;color:#fff;background:var(--acc);border:0;border-radius:9px;padding:10px 18px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
 .btn:hover{filter:brightness(1.08)}
 .btn.ghost{background:none;color:var(--ink);border:1px solid var(--line);padding:6px 12px;font-size:12.5px}
-:root[data-theme="dark"] .btn:not(.ghost),:root:not([data-theme="light"]) .btn:not(.ghost){color:#14122a}
+:root[data-theme="dark"] .btn:not(.ghost){color:#14122a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn:not(.ghost){color:#14122a}}
 .moods{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 .mood{font:inherit;font-weight:600;font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 16px;cursor:pointer;display:flex;align-items:center;gap:8px}
 .mood i{width:12px;height:12px;border-radius:50%;background:var(--c)}
@@ -93,9 +94,56 @@ textarea,.field{width:100%;font:inherit;color:var(--ink);background:var(--paper)
 .alert a{color:var(--bad);font-weight:700}
 .person{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 18px;padding:14px 0;border-bottom:1px solid var(--line)}
 .person:last-child{border:0}
+
+/* Support resources refresh */
+.support-intro{margin-bottom:18px}.support-intro .big{margin-bottom:6px}.support-intro .lead{max-width:none;margin:0}
+.support-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.support-tile{border:1px solid var(--line);border-radius:16px;padding:18px 14px;text-align:center;min-height:155px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px}
+.support-tile .tile-icon{font-size:30px;line-height:1.2}.support-tile h3{font-size:15px}.support-tile p{font-size:12.5px;color:var(--soft);margin:0}
+.support-tile.prof{background:#eaf6ef}.support-tile.self{background:#f1edfb}.support-tile.talk{background:#eaf3fb}.support-tile.emergency{background:#fbedf1}
+:root[data-theme="dark"] .support-tile{background:var(--card)}
+.psych-panel{border:1px solid #cfe5d8;background:linear-gradient(135deg,#f0f8f3,#f8fbf9);border-radius:18px;padding:20px;margin-top:16px}
+.psych-heading{display:flex;align-items:center;gap:12px;margin-bottom:14px}.psych-pin{font-size:28px}.psych-heading h2{font-size:20px}.psych-heading p{margin:2px 0 0;color:var(--soft);font-size:13px}
+.psych-search{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}.psych-search input{flex:1 1 200px;min-width:0;margin:0;background:white;border:1px solid #cbded3;border-radius:30px;padding:12px 16px;font:inherit;color:#20243a}.psych-search button{border:0;border-radius:30px;background:#16804d;color:white;padding:0 24px;font:inherit;font-weight:600;cursor:pointer}
+.doctor-list{background:rgba(255,255,255,.8);border-radius:16px;padding:0 16px}.doctor{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:15px 8px;border-bottom:1px solid #d6e6dc}.doctor:last-child{border-bottom:0}.doctor b{display:block;font-size:15px}.doctor .muted{font-size:12.5px;color:var(--soft)}.doctor .detail{font-size:13px;margin-top:3px}.doctor .directions{border:1px solid #16804d;border-radius:22px;padding:8px 13px;color:#12683e;text-decoration:none;font-size:12.5px;font-weight:600;white-space:nowrap}.demo-note{font-size:11px;color:var(--soft);margin:10px 2px 0}
+@media(max-width:820px){.support-tiles{grid-template-columns:1fr}.support-tile{min-height:0}.psych-panel{padding:14px}.doctor{grid-template-columns:1fr}.doctor .directions{justify-self:start}.psych-search button{padding:0 16px}}
+@media(max-width:420px){.support-tiles{gap:8px}.support-tile{padding:13px 8px;min-height:140px}.psych-heading h2{font-size:17px}}
+
+
+/* Support page: respect MindCare dark theme and keep text readable */
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .support-tile{background:var(--card);color:var(--ink)}}
+:root[data-theme="dark"] .support-tile{background:var(--card);color:var(--ink)}
+.support-tile h3{color:var(--ink);margin:2px 0}
+.support-tile p{color:var(--soft)}
+.psych-panel{background:var(--card);border-color:var(--line);color:var(--ink)}
+.psych-search input{background:var(--paper);border-color:var(--line);color:var(--ink)}
+.psych-search input::placeholder{color:var(--soft)}
+.psych-search button{min-height:44px}
+.psych-search .location-btn{background:var(--accsoft);color:var(--ink);border:1px solid var(--line);border-radius:30px;padding:0 16px;font:inherit;font-weight:600;cursor:pointer}
+.doctor-list{background:var(--paper);color:var(--ink);padding:0 14px}
+.maps-link{display:inline-block;margin:0 14px 14px;color:var(--acc);font-weight:700;text-decoration:none}
+:root[data-theme="dark"] .psych-panel{background:var(--card);border-color:var(--line)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .psych-panel{background:var(--card);border-color:var(--line)}:root:not([data-theme="light"]) .doctor-list{background:var(--paper)}}
+
 .person .num{font-size:22px;font-weight:700;color:var(--c);text-decoration:none}
 .person p{margin:2px 0 0;color:var(--soft);font-size:13px;max-width:46ch}
 .seg label{margin-right:18px}
+.self-panel{border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:16px;background:linear-gradient(160deg,var(--hero),var(--card) 60%)}
+.self-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:4px}
+.sc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.sc.wide{grid-column:1/-1;flex-direction:row;align-items:center;gap:28px;flex-wrap:wrap}
+.sc .badge{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:color-mix(in srgb,var(--c) 18%,transparent)}
+.sc h3{margin-top:4px}.sc .cap{margin:0}
+.gr{display:flex;gap:10px;align-items:center;padding:7px 10px;border-radius:10px;cursor:pointer;font-size:13.5px}
+.gr:hover{background:var(--paper)}.gr input{width:18px;height:18px;accent-color:var(--c)}
+.gr input:checked+span{color:var(--soft);text-decoration:line-through}
+.medt{font-size:38px;font-weight:800;letter-spacing:-.02em;color:var(--c);line-height:1.1;margin:4px 0}
+.durs{display:flex;gap:6px;flex-wrap:wrap}
+.sc textarea{margin-top:4px;min-height:84px;resize:vertical}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:7px 14px;border-radius:99px;background:var(--card);border:1px solid var(--line)}
+.tips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+@media(max-width:820px){.self-grid{grid-template-columns:1fr}.self-panel{padding:14px}.sc.wide{gap:16px}}
+.support-tile{cursor:pointer}.support-tile:hover{border-color:var(--acc)}
 .foot{color:var(--soft);font-size:12px;max-width:70ch;margin-top:28px}
 #toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:10px;font-weight:600;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;max-width:90vw}
 #toast.on{opacity:1}
@@ -138,7 +186,7 @@ textarea,.field{width:100%;font:inherit;color:var(--ink);background:var(--paper)
 @media (max-width:820px){#nav{overflow-x:auto;justify-content:flex-start}#nav a{flex:none}}
 [hidden]{display:none!important}
 .auth{position:fixed;inset:0;z-index:200;background:var(--paper);overflow:auto;display:grid;place-items:center;padding:16px}
-.aw{display:grid;grid-template-columns:1fr 1fr;max-width:920px;width:100%;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.aw{max-width:400px;width:100%;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 28px}.aw h1{text-align:center}.aw>.cap{text-align:center}
 .ahero{background:var(--hero);padding:38px;display:flex;flex-direction:column;gap:14px;justify-content:center}
 .ahero h2{font-size:26px;line-height:1.2;letter-spacing:-.02em}
 .ahero p,.ahero li{color:var(--soft);margin:0}.ahero ul{margin:0;padding-left:18px;display:grid;gap:4px}
@@ -168,15 +216,16 @@ textarea,.field{width:100%;font:inherit;color:var(--ink);background:var(--paper)
     <header class="bar2">
       <div><h1 id="ptitle">Overview</h1><p id="psub"></p></div>
       <div class="tools">
-        <label class="sw"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input id="search" type="search" placeholder="Search pages…" aria-label="Search pages"></label>
+        
+        <button class="icon" id="themeBtn" aria-label="Switch theme"><svg class="i" id="themeIco" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
         <button class="icon" id="lang" aria-label="Switch language between English and Hindi">हिं</button>
         <button class="icon" id="bell" aria-label="Notifications"><svg class="i" viewBox="0 0 24 24"><path d="M6 9a6 6 0 0112 0c0 6 2 7 2 7H4s2-1 2-7"/><path d="M10 20a2 2 0 004 0"/></svg></button>
         <span class="avatar" id="av" aria-hidden="true">S</span>
       </div>
     </header>
 
-    <div class="content">
-      <main class="page" id="p-overview">
+    <main class="content">
+      <div class="page" id="p-overview">
         <section class="panel">
           <div><p class="eyebrow">YOUR WELLBEING OVERVIEW</p><h2 class="big" id="hello"></h2>
             <p class="lead">Take a moment for yourself. A short check-in helps you notice your own patterns over time.</p>
@@ -194,9 +243,9 @@ textarea,.field{width:100%;font:inherit;color:var(--ink);background:var(--paper)
           <div class="card"><div class="ch"><div><h3>Sleep history</h3><p class="cap">Hours slept each night against your usual.</p></div><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 13A9 9 0 1111 3a7 7 0 0010 10z"/></svg></div><div class="box"><canvas id="cSleep" role="img" aria-label="Sleep history line chart"></canvas></div></div>
         </section>
         <section class="card">
-          <div class="ch"><div><h3>Screen time vs stress signal</h3><p class="cap">Daily screen time compared with the experimental model’s stress-related signal. This is an illustrative trend, not a clinical measure or proof that screen time causes stress.</p></div></div>
+          <div class="ch"><div><h3>Screen time vs stress signal</h3><p class="cap">Daily screen time next to the stress probability the model gave your written entries that day (gaps mean no entry). Not a clinical measure, and not proof that screen time causes stress.</p></div></div>
           <div class="box"><canvas id="cScreenStress" role="img" aria-label="Line chart comparing screen time and illustrative stress signal over 14 days"></canvas></div>
-          <p class="cap">The stress signal shown here is a demonstration derived from the sample dashboard data. Replace it with actual, date-matched model outputs before using this chart in your results.</p>
+          <p class="cap">Write an entry in Daily check-in to add points to the stress line.</p>
         </section>
         <section class="two">
           <div class="card"><h3>Today, next to your normal</h3><div id="ledger"></div><p class="cap" id="dist"></p></div>
@@ -207,37 +256,73 @@ textarea,.field{width:100%;font:inherit;color:var(--ink);background:var(--paper)
           <div class="card"><h3>What moved today’s score</h3><p class="cap">Which signals pulled away from normal.</p><div class="box"><canvas id="cWhy" role="img" aria-label="Doughnut chart of score contributors"></canvas></div></div>
           <div class="card"><h3>How the fortnight felt</h3><p class="cap">Days spent in each kind of weather.</p><div class="box"><canvas id="cPie" role="img" aria-label="Pie chart of days by weather"></canvas></div></div>
         </section>
-      </main>
+      </div>
 
-      <main class="page" id="p-checkin">
+      <div class="page" id="p-checkin">
         <section class="card"><h3>How are you feeling today?</h3><p class="cap">Pick the word that fits best.</p><div class="moods" id="moods" role="group" aria-label="Today’s mood"></div></section>
-        <section class="card"><h3>Anything you’d like to write down?</h3><p class="cap">A few honest lines is plenty. It also updates today’s mood.</p>
+        <section class="card"><h3>Today’s numbers</h3><p class="cap">Optional, but they make your charts and garden more useful. Saved for today’s date.</p>
+          <div class="stats" style="margin-top:10px"><label class="cap">Sleep last night (hours)<input class="field" id="ci_sleep" type="number" min="0" max="24" step="0.1" inputmode="decimal" style="margin-top:4px"></label>
+          <label class="cap">Steps today<input class="field" id="ci_steps" type="number" min="0" max="100000" step="1" inputmode="numeric" style="margin-top:4px"></label>
+          <label class="cap">Screen time today (hours)<input class="field" id="ci_screen" type="number" min="0" max="24" step="0.1" inputmode="decimal" style="margin-top:4px"></label></div>
+          <p style="margin:14px 0 0"><button class="btn" id="ci">Save today’s check-in</button></p></section>
+        <section class="card"><h3>Anything you’d like to write down?</h3><p class="cap">A few honest lines is plenty.</p>
           <textarea id="jt" rows="6" aria-label="Your entry" placeholder="Slept badly again, and the exam stress is getting to me…"></textarea>
           <p style="margin:12px 0 0"><button class="btn" id="go">Read my entry</button></p><div id="res"></div></section>
-      </main>
+      </div>
 
-      <main class="page" id="p-journal">
+      <div class="page" id="p-journal">
         <section class="card"><h3>My entries</h3><div id="entries"><p class="cap">Nothing here yet. Write your first one in Daily check-in.</p></div></section>
         <section class="card"><h3>Day by day</h3><div class="tabs" role="tablist" id="tabs"></div><div class="box"><canvas id="cHab" role="img" aria-label="Bar chart of a daily habit"></canvas></div><p class="cap">Pink bars are days that drifted well away from your usual.</p></section>
         <section class="card"><h3>This week and last week</h3><div class="box"><canvas id="cWk" role="img" aria-label="Weekly comparison"></canvas></div><p class="cap">100% is your normal. Taller means more than usual.</p></section>
-      </main>
+      </div>
 
-      <main class="page" id="p-support">
-        <section class="card"><h3>People who can help</h3><p class="cap">You don’t need to be in crisis to call. A real voice often helps more than any app.</p>
-          <div class="person" style="--c:var(--pink)"><div><b>Tele-MANAS</b><p>Free tele-counselling from trained listeners, any time of day.</p></div><a class="num" href="tel:14416">14416</a></div>
-          <div class="person" style="--c:var(--blue)"><div><b>KIRAN helpline</b><p>Government mental health rehabilitation helpline.</p></div><a class="num" href="tel:18005990019">1800-599-0019</a></div>
+      <div class="page" id="p-support">
+        <div class="support-intro"><h2 class="big">Support Resources</h2><p class="lead">Find trusted help, self-care tools and professional support for your mental well-being.</p></div>
+        <section class="support-tiles" aria-label="Support categories">
+          <div class="support-tile prof" data-go="sec-pro" role="button" tabindex="0"><div class="tile-icon" aria-hidden="true">🩺</div><h3>Talk to a Professional</h3><p>Find psychiatrists, psychologists and counsellors.</p></div>
+          <div class="support-tile self" data-go="sec-breathe" role="button" tabindex="0"><div class="tile-icon" aria-hidden="true">🪷</div><h3>Self-Care Resources</h3><p>Try breathing exercises, meditation and journaling.</p></div>
+          
+          <div class="support-tile emergency" data-go="sec-people" role="button" tabindex="0"><div class="tile-icon" aria-hidden="true">☎️</div><h3>Emergency Support</h3><p>Get immediate help from verified helplines.</p></div>
+        </section>
+        <section class="psych-panel" id="sec-pro">
+          <div class="psych-heading"><span class="psych-pin" aria-hidden="true">📍</span><div><h2>Find a Psychiatrist Near You</h2><p>Search by city or PIN code to find nearby mental health professionals.</p></div></div>
+          <form class="psych-search" id="psychSearchForm">
+            <input id="psychLocation" type="search" placeholder="Enter city or PIN code" aria-label="City or PIN code">
+            <button type="submit">Search</button>
+            <button type="button" id="useMyLocation" class="location-btn">Use my location</button>
+          </form>
+          <div class="doctor-list" id="doctorResults" aria-live="polite">
+            <p class="cap" id="psychMessage" style="padding:14px;margin:0">Enter a city or PIN code, or use your location to find psychiatrists on Google Maps.</p>
+            <a class="maps-link" id="mapsSearchLink" href="https://www.google.com/maps/search/psychiatrists+near+me/" target="_blank" rel="noopener" hidden>View nearby psychiatrists on Google Maps ↗</a>
+          </div>
+          <p class="demo-note">Search opens Google Maps for current nearby clinic listings. Check each clinic’s qualifications, address and phone number before contacting.</p>
+        </section>
+        <section class="card" id="sec-people"><h3>People who can help</h3><p class="cap">You don’t need to be in crisis to call. A real voice often helps more than any app.</p>
+          <div class="person" style="--c:var(--pink)"><div><b>Tele-MANAS</b><p>Free government tele-mental-health support. Check current service details before publishing.</p></div><a class="num" href="tel:14416">14416</a></div>
           <div class="person" style="--c:var(--orange)"><div><b>In immediate danger</b><p>If you or someone near you is unsafe right now, call emergency services.</p></div><a class="num" href="tel:112">112</a></div>
-          <div class="person" style="--c:var(--teal)"><div><b>Your campus counsellor</b><p>A confidential chat at your university. Add your counselling centre’s contact here.</p></div></div>
-          <div class="person" style="--c:var(--yel)"><div><b>A licensed online counsellor</b><p>Video or chat sessions. Connect a verified directory here.</p></div></div></section>
-        <section class="card"><h3>Book a conversation</h3><p class="cap">Send a request to your counselling centre. You choose what to share, and your scores are never attached.</p>
-          <div class="two" style="margin-top:10px"><div><label class="cap" for="bsv">Who would you like to see?</label><br><select class="sel" id="bsv" style="width:100%"><option>Campus counsellor</option><option>Online counsellor</option></select></div><div><label class="cap" for="bwh">Preferred day and time</label><input class="field" id="bwh" style="margin:0" placeholder="e.g. Tuesday afternoon"></div></div>
-          <textarea id="bnote" rows="3" aria-label="Optional note" placeholder="Anything you’d like them to know (optional)"></textarea>
-          <p style="margin:12px 0 0"><button class="btn" id="bgo">Request appointment</button></p><div id="bres"></div></section>
-        <section class="card"><h3>Take one minute to breathe</h3><p class="cap">Breathe in for 4, hold for 4, out for 6. We’ll do five rounds together.</p><div class="breath"><div class="orb" id="orb" aria-hidden="true"></div><div><b id="bl" aria-live="polite">Ready when you are</b><p style="margin:10px 0 0"><button class="btn" id="bb">Start</button></p></div></div><p>Afterwards, drink some water and message one person you trust. “Can we talk?” is enough.</p></section>
-      </main>
+</section>
+<section class="self-panel" id="sec-breathe">
+          <div class="psych-heading"><span class="psych-pin" aria-hidden="true">🪷</span><div><h2>Self-Care Resources</h2><p>Small, gentle practices you can do right now. Pick whichever feels doable.</p></div></div>
+          <div class="self-grid">
+            <article class="sc wide" style="--c:var(--teal)"><div class="orb" id="orb" aria-hidden="true"></div>
+              <div style="flex:1;min-width:220px"><div class="badge" aria-hidden="true">🌬️</div><h3>One-minute breathing</h3><p class="cap">Breathe in for 4, hold for 4, out for 6. We’ll do five rounds together.</p>
+                <p style="margin:12px 0 4px"><b id="bl" aria-live="polite">Ready when you are</b></p><button class="btn" id="bb">Start</button></div></article>
+            <article class="sc" style="--c:var(--acc)"><div class="badge" aria-hidden="true">🧘</div><h3>Quiet minutes</h3><p class="cap">Sit comfortably, close your eyes and let the timer hold the time for you.</p>
+              <div class="durs" id="med_dur"><button class="tab" data-m="1" aria-selected="true">1 min</button><button class="tab" data-m="3" aria-selected="false">3 min</button><button class="tab" data-m="5" aria-selected="false">5 min</button></div>
+              <div class="medt" id="med_t" aria-live="off">01:00</div><div class="bar" style="margin:0 0 6px"><div id="med_bar" style="width:0;background:var(--acc)"></div></div><div><button class="btn" id="med_go">Start</button></div></article>
+            <article class="sc" style="--c:var(--orange)"><div class="badge" aria-hidden="true">🌿</div><h3>5-4-3-2-1 grounding</h3><p class="cap">For racing thoughts. Notice, one sense at a time:</p>
+              <div id="gr_list"><label class="gr"><input type="checkbox"><span>5 things you can see</span></label><label class="gr"><input type="checkbox"><span>4 things you can feel</span></label><label class="gr"><input type="checkbox"><span>3 things you can hear</span></label><label class="gr"><input type="checkbox"><span>2 things you can smell</span></label><label class="gr"><input type="checkbox"><span>1 thing you can taste</span></label></div>
+              <p class="cap"><span id="gr_n">0 of 5</span> · <button class="btn ghost" id="gr_reset" style="padding:3px 10px">Reset</button></p></article>
+            <article class="sc" style="--c:var(--pink)"><div class="badge" aria-hidden="true">📓</div><h3>Gratitude note</h3><p class="cap" id="gt_p">One good thing from today, however small.</p>
+              <textarea class="field" id="gt" rows="3" aria-label="Gratitude note" maxlength="400" placeholder="Write a line or two…"></textarea>
+              <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="gt_save">Save to my journal</button><button class="btn ghost" id="gt_new">New prompt</button></div></article>
+          </div>
+          <div class="tips" aria-label="Quick ideas"><span class="pill">💧 Drink a glass of water</span><span class="pill">🚶 Step outside for five minutes</span><span class="pill">🤸 Stretch your shoulders</span><span class="pill">💬 Message one person you trust. “Can we talk?” is enough.</span></div>
+        </section>
+      </div>
 
-      <main class="page" id="p-profile">
-        <section class="card"><h3>About you</h3><label for="pname" class="cap">What should we call you?</label><input class="field" id="pname" value="Shreya" maxlength="30" style="max-width:320px"></section>
+      <div class="page" id="p-profile">
+        <section class="card"><h3>About you</h3><label for="pname" class="cap">What should we call you?</label><input class="field" id="pname" value="" maxlength="30" style="max-width:320px"></section>
         <section class="two">
           <div class="card"><h3>What I’m happy to share</h3><p class="cap">Switch something off and it drops out of your score.</p><div id="consent"></div></div>
           <div class="card"><h3>Your normal</h3><p class="cap">Learned from your recent days.</p><div id="basetbl"></div></div>
@@ -250,24 +335,15 @@ textarea,.field{width:100%;font:inherit;color:var(--ink);background:var(--paper)
           <div class="card"><h3>Gentle reminders</h3><p class="cap">A nudge to check in. It only works while this page is open, and a missed day never resets your streak.</p>
             <label class="row2"><span><b>Remind me daily</b></span><input type="checkbox" id="remOn"></label>
             <label class="row2"><span>Time</span><input type="time" id="remT" value="20:00" class="sel"></label></div>
-          <div class="card"><h3>Demo: learning stage</h3><p class="cap">Pretend you joined this many days ago to see how the first two weeks look.</p>
-            <input type="range" id="ld" min="1" max="14" value="14" aria-label="Days since joining"> <b id="ldv">14</b> days</div>
         </section>
-      </main>
+      </div>
 
-      <main class="page" id="p-screening">
+      <div class="page" id="p-screening">
         <section class="card"><h3>Quick questionnaires</h3><p class="cap">Two widely used screening questionnaires. Do one every couple of weeks to cross-check what MindCare notices. They are not a diagnosis.</p>
           <div class="tabs" id="qtabs"></div><p class="cap" style="margin-top:12px">Over the last 2 weeks, how often have you been bothered by the following?</p>
           <div id="qlist"></div><p style="margin:14px 0 0"><button class="btn" id="qgo">See my score</button></p><div id="qres"></div></section>
-      </main>
-      <main class="page" id="p-campus">
-        <section class="card"><h3>Campus view</h3><p class="cap">Anonymous group trends for a college or wellness team. Individual data is never shown, and any group smaller than 10 people is hidden. The figures are a simulated group, for demonstration.</p>
-          <label class="cap" for="dept" style="display:block;margin-top:10px">Group</label><select class="sel" id="dept"></select></section>
-        <section class="stats" id="cstats"></section>
-        <section class="two" id="cohwrap"><div class="card"><h3>This week’s weather across the group</h3><div class="box"><canvas id="cCoh" role="img" aria-label="Pie chart of group weather"></canvas></div></div>
-          <div class="card"><h3>Share needing support, by week</h3><div class="box"><canvas id="cTr" role="img" aria-label="Line chart of share needing support"></canvas></div></div></section>
-      </main>
-      <main class="page" id="p-results">
+      </div>
+      <div class="page" id="p-results">
         <section class="card"><h3>Model results</h3><p class="cap">How the text model (MentalBERT) and the behaviour model (BiLSTM) did on the held-out Dreaddit test set. Paste the numbers from your notebook. Nothing is shown until you add real results.</p>
           <textarea id="mj" rows="7" aria-label="Model results as JSON"></textarea>
           <p style="margin:12px 0 0"><button class="btn" id="mgo">Show results</button> <button class="btn ghost" id="mfmt">Insert example format</button></p><div id="mres"></div></section>
@@ -275,73 +351,61 @@ textarea,.field{width:100%;font:inherit;color:var(--ink);background:var(--paper)
           <p><b>Status:</b> <span id="sst"></span></p><p class="cap" style="margin:8px 0 4px">Trigger phrases</p><div id="sph" class="lg"></div>
           <p class="cap" style="margin-top:10px">Message shown: “You don’t have to handle this alone. Call Tele-MANAS on 14416 any time. If you’re in immediate danger, call 112.”</p>
           <div class="two" style="margin-top:10px"><input class="field" id="srv" style="margin:0" placeholder="Reviewer’s name" aria-label="Reviewer name"><button class="btn" id="srb">Mark as reviewed</button></div></section>
-      </main>
-      <p class="foot">MindCare gives early, non-diagnostic guidance and does not replace professional care. Numbers shown are sample data until it is connected to your models.</p>
-    </div>
+      </div>
+      <p class="foot">MindCare gives early, non-diagnostic guidance and does not replace professional care. Your charts use only what you record here. In this demo it is saved in your browser, per account.</p>
+    </main>
   </div>
 </div>
 <div class="auth" id="auth"><div class="aw">
-  <aside class="ahero">
-    <div class="brand" style="padding:0"><span class="logo"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span><div>Mind<span>Care</span></div></div>
-    <h2>A check-in that knows what’s normal for you.</h2>
-    <p>Track your mood, sleep and activity. MindCare compares today with your own usual days, and points you to real people when you need them.</p>
-    <ul><li>Private by design, you choose what is shared</li><li>Not a diagnosis, just early guidance</li><li>Support is always one tap away</li></ul>
-  </aside>
-  <section class="aform">
-    <div class="tabs" role="tablist"><button class="tab" id="tLogin" role="tab" aria-selected="true">Log in</button><button class="tab" id="tSign" role="tab" aria-selected="false">Sign up</button></div>
-    <h1 id="ah">Welcome back</h1><p class="cap" id="asub">Log in to see your overview.</p>
-    <form id="af" novalidate>
-      <div id="fName" hidden><label for="an">What should we call you?</label><input class="field" id="an" autocomplete="name" maxlength="30"></div>
-      <label for="ae">Email</label><input class="field" id="ae" type="email" autocomplete="email" inputmode="email">
-      <label for="ap">Password</label>
-      <div class="pwrap"><input class="field" id="ap" type="password" autocomplete="current-password"><button type="button" class="ghostb" id="aeye" aria-label="Show or hide password">Show</button></div>
-      <div id="fConf" hidden>
-        <div class="bar" style="margin:8px 0 2px"><div id="mfill" style="width:0"></div></div><p class="cap" id="mtxt" style="margin:0">Use 8 or more characters, with letters and a number.</p>
-        <label for="ac">Confirm password</label><input class="field" id="ac" type="password" autocomplete="new-password">
-        <label class="chk"><input type="checkbox" id="aok"><span>I understand MindCare is not a diagnosis, and I’m happy with what it collects (see below).</span></label>
-        <details><summary>What MindCare collects, and why</summary><p>Your mood and what you write, so a language model can notice distress. Sleep, steps and screen time, to compare today with your own usual days. You can switch any of these off later in My profile.</p></details>
-      </div>
-      <p class="aerr" id="aerr" role="alert"></p>
-      <button class="btn" id="ago" style="width:100%;justify-content:center">Log in</button>
-    </form>
-    <p class="cap" style="margin-top:12px"><a href="#" id="afg">Forgot password?</a></p>
-  
-    <p class="cap">In a crisis, call Tele-MANAS on 14416, or 112 if you are in danger.</p>
-  </section></div></div>
-<div class="ov" id="onb" role="dialog" aria-modal="true" aria-labelledby="ot" hidden><div class="dlg">
-  <h2 id="ot">Welcome to MindCare</h2><p class="cap">Create your profile in a minute. In this demo nothing is sent anywhere.</p>
-  <label class="cap" for="on_name" style="display:block;margin-top:12px">What should we call you?</label><input class="field" id="on_name" value="Shreya" maxlength="30" style="margin:4px 0 12px">
-  <p class="cap"><b>What we collect, and why.</b> You can change this any time in My profile.</p>
-  <label class="chk"><input type="checkbox" data-k="mood" checked><span><b>Mood and what you write</b><small>Read by a language model to notice distress in your words.</small></span></label>
-  <label class="chk"><input type="checkbox" data-k="sleep" checked><span><b>Sleep</b><small>Hours slept, to notice changes from your usual pattern.</small></span></label>
-  <label class="chk"><input type="checkbox" data-k="steps" checked><span><b>Activity</b><small>Daily steps, to notice when you move much less than usual.</small></span></label>
-  <label class="chk"><input type="checkbox" data-k="screen" checked><span><b>Screen time</b><small>Hours on your phone, to notice big shifts.</small></span></label>
-  <label class="chk"><input type="checkbox" id="on_ok"><span><b>I understand MindCare is not a diagnosis</b><small>It gives early guidance and points you to people who can help. It does not replace a doctor or counsellor.</small></span></label>
-  <p style="margin:14px 0 6px"><button class="btn" id="on_go" disabled>Create my profile</button></p>
-  <p class="cap">In a crisis, call Tele-MANAS on 14416, or 112 if you are in danger.</p></div></div>
+  <div class="brand" style="padding:0 0 18px;justify-content:center"><span class="logo"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span><div>Mind<span>Care</span></div></div>
+  <div class="tabs" role="tablist" style="justify-content:center"><button class="tab" id="tLogin" role="tab" aria-selected="true">Log in</button><button class="tab" id="tSign" role="tab" aria-selected="false">Sign up</button></div>
+  <h1 id="ah">Welcome back</h1><p class="cap" id="asub">Log in to see your overview.</p>
+  <form id="af" novalidate>
+    <div id="fName" hidden><label for="an">Your name</label><input class="field" id="an" autocomplete="name" maxlength="30"></div>
+    <label for="ae">Email</label><input class="field" id="ae" type="email" autocomplete="email" inputmode="email">
+    <label for="ap">Password</label>
+    <div class="pwrap"><input class="field" id="ap" type="password" autocomplete="current-password"><button type="button" class="ghostb" id="aeye" aria-label="Show or hide password">Show</button></div>
+    <div id="fConf" hidden><p class="cap" style="margin:6px 0 0">At least 8 characters, with a letter and a number.</p>
+      <label class="chk"><input type="checkbox" id="aok"><span>I understand MindCare gives early guidance and is not a diagnosis.</span></label></div>
+    <p class="aerr" id="aerr" role="alert"></p>
+    <button class="btn" id="ago" style="width:100%;justify-content:center">Log in</button>
+  </form>
+  <p class="cap" style="margin:14px 0 0;text-align:center"><a href="#" id="afg">Forgot password?</a></p>
+  <p class="cap" style="text-align:center">In a crisis, call Tele-MANAS on 14416, or 112 if you are in danger.</p>
+</div></div>
 <div id="toast" role="status"></div>
 <script>
-// ---- SAMPLE DATA: swap for results from your MentalBERT + BiLSTM backend ----
-const labels=["15 Oct","16 Oct","17 Oct","18 Oct","19 Oct","20 Oct","21 Oct","22 Oct","23 Oct","24 Oct","25 Oct","26 Oct","27 Oct","28 Oct"];
-const data={mood:[4,4,3,4,4,5,4,4,3,3,3,2,3,3],sleep:[7.4,7.1,7.5,6.9,7.3,7.8,7.2,7.0,6.6,6.4,6.2,5.9,6.3,6.5],
-  screen:[2.4,2.7,2.5,2.9,2.3,2.1,2.6,2.8,3.1,3.3,3.6,3.9,3.4,3.2],steps:[6800,6200,7100,5900,6600,8200,6900,6400,5400,4900,4600,3900,4500,4320]};
-const base={mood:3.8,sleep:7.2,screen:2.6,steps:6500};
+// ---- Per-user data: every account has its own check-ins, entries, settings ----
+const labels=[],keys=[],data={mood:[],sleep:[],screen:[],steps:[]};
+const BASE0={mood:3.5,sleep:7.5,screen:3,steps:6000},base={...BASE0};
 const W={mood:.4,sleep:.25,steps:.2,screen:.15},on={mood:true,sleep:true,steps:true,screen:true};
+const blank=()=>({days:{},entries:[],q:{},on:{mood:true,sleep:true,steps:true,screen:true},theme:"auto",rem:{on:false,t:"20:00"},alerts:0});
+let U=blank(),ACC=null,pendingMood=null;
+const dk=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const curIdx=()=>{for(let i=13;i>=0;i--)if(U.days[keys[i]])return i;return -1;};
+function buildWindow(){
+  const t=new Date();labels.length=0;keys.length=0;
+  for(let i=13;i>=0;i--){const d=new Date(t.getFullYear(),t.getMonth(),t.getDate()-i);keys.push(dk(d));labels.push(d.getDate()+" "+d.toLocaleString("en-GB",{month:"short"}));}
+  ["mood","sleep","screen","steps"].forEach(k=>{data[k]=keys.map(x=>{const r=U.days[x];return r&&typeof r[k]==="number"?r[k]:null;});});
+  const cnt=keys.filter(x=>U.days[x]).length,cu=curIdx();learnDay=Math.min(14,cnt);
+  ["mood","sleep","screen","steps"].forEach(k=>{const v=data[k].filter((x,i)=>x!=null&&(cnt<2||i!==cu));base[k]=v.length?+av(v).toFixed(k==="steps"?0:1):BASE0[k];});
+}
+function save(){if(!U||!ACC)return;U.alerts=alerts;const a=getAcc();if(!a[ACC])return;a[ACC].name=name;a[ACC].u=U;putAcc(a);}
 // -----------------------------------------------------------------------------
 const $=id=>document.getElementById(id),css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const K={pink:"#ff5c8a",yel:"#ffc933",teal:"#0bb5a1",blue:"#7a5cc4",orange:"#ff8a4c",lime:"#8bd96b"};
 const LV={Low:["Clear skies",K.teal],Moderate:["Patchy clouds",K.yel],High:["Stormy for now",K.pink]};
 const MOODS=[["Rough",1,K.pink],["Low",2,K.orange],["Okay",3,K.yel],["Good",4,K.lime],["Great",5,K.teal]];
 const HAB={sleep:["Sleep",K.teal,"low"],screen:["Screen time",K.blue,"high"],steps:["Steps",K.orange,"low"]};
-const IC={overview:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',checkin:'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 3h6v3H9z"/><path d="M9 14l2 2 4-4"/>',screening:'<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>',journal:'<path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 21V5"/>',support:'<path d="M12 20s-7-4.4-7-10a4 4 0 017-2.5A4 4 0 0119 10c0 5.6-7 10-7 10z"/>',campus:'<path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/>',results:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',profile:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/>'};
-const ROUTES=[["overview","Overview","Your personal wellbeing overview","search overview home trends sleep mood charts"],["checkin","Daily check-in","Two minutes for how you feel","check mood write feel entry"],["screening","Screening","Two short questionnaires to cross-check","screening questionnaire phq gad anxiety depression"],["journal","My journal","Your entries and patterns","journal entries patterns history habits"],["support","Support resources","People who can help, any time","support help helpline counsellor book appointment"],["campus","Campus view","Anonymous group trends","campus institution college group anonymous"],["results","Model results","How well the models performed","model results accuracy f1 dreaddit safety review"],["profile","My profile","What MindCare may use, and how it looks","profile settings privacy theme name consent reminder"]];
+const IC={overview:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',checkin:'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 3h6v3H9z"/><path d="M9 14l2 2 4-4"/>',screening:'<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>',journal:'<path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 21V5"/>',support:'<path d="M12 20s-7-4.4-7-10a4 4 0 017-2.5A4 4 0 0119 10c0 5.6-7 10-7 10z"/>',results:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',profile:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/>'};
+const ROUTES=[["overview","Overview","Your personal wellbeing overview","search overview home trends sleep mood charts"],["checkin","Daily check-in","Two minutes for how you feel","check mood write feel entry"],["screening","Screening","Two short questionnaires to cross-check","screening questionnaire phq gad anxiety depression"],["journal","My journal","Your entries and patterns","journal entries patterns history habits"],["support","Support resources","People who can help, any time","support help helpline counsellor book appointment"],["results","Model results","How well the models performed","model results accuracy f1 dreaddit safety review"],["profile","My profile","What MindCare may use, and how it looks","profile settings privacy theme name consent reminder"]];
 let habit="sleep",charts={};
 const level=s=>s<25?"Low":s<50?"Moderate":"High";
-function devs(i){const c=x=>Math.min(1,Math.max(0,x));return{
-  mood:c((base.mood-data.mood[i])/base.mood*1.6),sleep:c(Math.abs(data.sleep[i]-base.sleep)/base.sleep*1.6),
-  steps:c((base.steps-data.steps[i])/base.steps*1.6),screen:c((data.screen[i]-base.screen)/base.screen*1.6)};}
+function devs(i){const c=x=>Math.min(1,Math.max(0,x)),v=k=>data[k][i];return{
+  mood:v("mood")==null?0:c((base.mood-v("mood"))/base.mood*1.6),sleep:v("sleep")==null?0:c(Math.abs(v("sleep")-base.sleep)/base.sleep*1.6),
+  steps:v("steps")==null?0:c((base.steps-v("steps"))/base.steps*1.6),screen:v("screen")==null?0:c((v("screen")-base.screen)/base.screen*1.6)};}
 function wt(k){const t=Object.keys(W).reduce((a,x)=>a+(on[x]?W[x]:0),0);return on[k]&&t?W[k]/t:0;}
-const score=i=>{const d=devs(i);return Math.round(100*Object.keys(W).reduce((a,k)=>a+wt(k)*d[k],0));};
+const score=i=>{const d=devs(i);let t=0,s=0;for(const k of Object.keys(W))if(on[k]&&data[k][i]!=null){t+=W[k];s+=W[k]*d[k];}return t?Math.round(100*s/t):null;};
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c]);
 
 function sky(lv){
@@ -354,18 +418,17 @@ function sky(lv){
     for(let i=0;i<7;i++)b+=`<path d="M${70+i*30} 138l-10 30" stroke="${K.pink}" stroke-width="5" stroke-linecap="round"/>`;}
   return `<svg viewBox="0 0 300 220" role="img" aria-label="Illustration of today’s inner weather">${b}${ground}</svg>`;
 }
-function run(k,bad){let n=0;for(let i=13;i>=0&&bad(data[k][i]);i--)n++;return n;}
+function run(k,bad){let n=0;for(let i=curIdx();i>=0&&data[k][i]!=null&&bad(data[k][i]);i--)n++;return n;}
 const vs=(v,b,low)=>{const p=Math.round((v-b)/b*100),bad=low?p<-10:p>10;return `<em class="${bad?"bad":"ok"}">${Math.abs(p)}% ${p<0?"below":"above"} your usual</em>`;};
 
 function renderToday(sc,lv,d){
-  const h=new Date().getHours();
+  const h=new Date().getHours(),cu=curIdx();
   const g=h<12?"Good morning":h<17?"Good afternoon":"Good evening";$("hello").textContent=TR(g)+", "+name+".";renderStats();
-  $("wx").textContent=learnDay<14?TR("Still learning your normal"):TR("Today")+": "+TR(LV[lv][0]);
-  const T=13;
-  $("ledger").innerHTML=[["Mood",MOODS[data.mood[T]-1][0],vs(data.mood[T],base.mood,true)],["Sleep",data.sleep[T]+" hrs",vs(data.sleep[T],base.sleep,true)],
-    ["Steps",data.steps[T].toLocaleString("en-IN"),vs(data.steps[T],base.steps,true)],["Screen time",data.screen[T]+" hrs",vs(data.screen[T],base.screen,false)]]
-    .map(r=>`<div class="row"><span>${r[0]}</span><b>${r[1]}</b>${r[2]}</div>`).join("");
-  $("dist").textContent=`Distance from your usual: ${sc} out of 100. Lower is calmer.`;
+  $("wx").textContent=cu<0?TR("No check-in yet"):learnDay<14?TR("Still learning your normal"):TR(cu===13?"Today":"Latest")+": "+TR(LV[lv][0]);
+  if(cu<0){$("ledger").innerHTML='<p class="cap">No check-ins yet. <a href="#checkin">Add your first one.</a></p>';$("dist").textContent="";$("facts").innerHTML="<li>Nothing to show yet.</li>";$("note").textContent="Add a daily check-in and your overview, garden and charts will fill in here.";return;}
+  const row=(l,k,f,low)=>{const v=data[k][cu];return `<div class="row"><span>${l}</span><b>${v==null?"–":f(v)}</b>${v==null?'<em class="cap">not recorded</em>':vs(v,base[k],low)}</div>`;};
+  $("ledger").innerHTML=row("Mood","mood",v=>MOODS[v-1][0],true)+row("Sleep","sleep",v=>v+" hrs",true)+row("Steps","steps",v=>v.toLocaleString("en-IN"),true)+row("Screen time","screen",v=>v+" hrs",false);
+  $("dist").textContent=sc==null?"":`Distance from your usual: ${sc} out of 100. Lower is calmer.`;
   const F=[["Your sleep","under",run("sleep",v=>v<base.sleep*.92)],["Your screen time","over",run("screen",v=>v>base.screen*1.12)],
     ["Your step count","under",run("steps",v=>v<base.steps*.8)],["Your mood","under",run("mood",v=>v<base.mood-.5)]].filter(f=>f[2]>=3);
   $("facts").innerHTML=F.length?F.map(f=>`<li>${f[0]} has been ${f[1]} your usual for ${f[2]} days in a row.</li>`).join(""):"<li>Nothing out of the ordinary lately.</li>";
@@ -375,41 +438,42 @@ function renderToday(sc,lv,d){
     High:`Quite a few things look different from your normal, especially ${nm}. It could really help to talk to someone today. <a href="#support">Here are some people to call.</a>`}[lv]+whyText(lv);
 }
 function mk(id,cfg){if(charts[id])charts[id].destroy();charts[id]=new Chart($(id),cfg);}
+function renderBase(){$("basetbl").innerHTML=[["Mood",base.mood+" of 5"],["Sleep",base.sleep+" hrs"],["Steps",base.steps.toLocaleString("en-IN")],["Screen time",base.screen+" hrs"]].map(r=>`<div class="row"><span>${r[0]}</span><b>${r[1]}</b></div>`).join("");}
+const isDark=()=>{const t=document.documentElement.dataset.theme;return t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches;};
+function updTheme(){const d=isDark();$("themeIco").innerHTML=d?'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>':'<path d="M21 13A9 9 0 1111 3a7 7 0 0010 10z"/>';
+  $("themeBtn").setAttribute("aria-label",d?"Switch to light theme":"Switch to dark theme");$("themeBtn").title=d?"Light theme":"Dark theme";}
 function render0(){
-  Chart.defaults.font.family='"Bricolage Grotesque",system-ui,sans-serif';Chart.defaults.font.size=13;
+  buildWindow();updTheme();
+  Chart.defaults.font.family='"Inter",system-ui,sans-serif';Chart.defaults.font.size=13;
   Chart.defaults.color=css("--soft");const ink=css("--ink"),paper=css("--paper"),gr="rgba(120,135,170,.25)";
-  const scores=labels.map((_,i)=>score(i)),sc=scores[13],lv=learnDay<14?"Low":level(sc),d=devs(13);
-  document.querySelectorAll(".mood").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.v===data.mood[13]));
-  document.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.k===habit));
-  renderToday(sc,lv,d);$("bell").dataset.alert=lv==="High"?"1":"";renderGarden(scores,d,lv);renderLearn();renderCampus();lastLv=lv;
+  const scores=keys.map((_,i)=>score(i)),cu=curIdx(),sc=cu<0?null:scores[cu],lv=learnDay<14||sc==null?"Low":level(sc),d=devs(cu);
+  document.querySelectorAll(".mood").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.v===pendingMood));
+  document.querySelectorAll("#tabs .tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.k===habit));
+  renderToday(sc,lv,d);$("bell").dataset.alert=(lv==="High"||alerts>0)?"1":"";renderGarden(scores,d,lv);renderLearn();renderBase();lastLv=lv;
   const x={grid:{display:false},ticks:{maxTicksLimit:7}},leg={position:"bottom",labels:{boxWidth:12,color:ink}};
-  mk("cSleep",{type:"line",data:{labels,datasets:[{label:"Sleep (hrs)",data:data.sleep,borderColor:K.teal,backgroundColor:"rgba(11,181,161,.18)",fill:true,tension:.35,borderWidth:4,pointRadius:4},{label:"Your usual",data:labels.map(()=>base.sleep),borderColor:ink,borderDash:[7,7],pointRadius:0,borderWidth:2}]},options:{maintainAspectRatio:false,scales:{y:{min:4,max:9,grid:{color:gr}},x},plugins:{legend:leg}}});
-  mk("cRisk",{type:"line",data:{labels,datasets:[{data:scores,borderColor:K.blue,borderWidth:4,tension:.35,fill:true,backgroundColor:"rgba(122,92,196,.14)",pointRadius:7,pointBorderWidth:2,pointBorderColor:ink,pointBackgroundColor:scores.map(s=>LV[level(s)][1])}]},
-    options:{maintainAspectRatio:false,scales:{y:{min:0,max:100,grid:{color:gr}},x},plugins:{legend:{display:false},tooltip:{callbacks:{afterLabel:c=>LV[level(c.parsed.y)][0]}}}}});
+  const flat=v=>labels.map(()=>v);
+  mk("cSleep",{type:"line",data:{labels,datasets:[{label:"Sleep (hrs)",data:data.sleep,borderColor:K.teal,backgroundColor:"rgba(11,181,161,.18)",fill:true,tension:.35,borderWidth:4,pointRadius:4},{label:"Your usual",data:flat(base.sleep),borderColor:ink,borderDash:[7,7],pointRadius:0,borderWidth:2}]},options:{maintainAspectRatio:false,scales:{y:{min:0,suggestedMax:10,grid:{color:gr}},x},plugins:{legend:leg}}});
+  mk("cRisk",{type:"line",data:{labels,datasets:[{data:scores,borderColor:K.blue,borderWidth:4,tension:.35,fill:true,backgroundColor:"rgba(122,92,196,.14)",pointRadius:7,pointBorderWidth:2,pointBorderColor:ink,pointBackgroundColor:scores.map(s=>s==null?"transparent":LV[level(s)][1])}]},
+    options:{maintainAspectRatio:false,scales:{y:{min:0,max:100,grid:{color:gr}},x},plugins:{legend:{display:false},tooltip:{callbacks:{afterLabel:c=>c.parsed.y==null?"":LV[level(c.parsed.y)][0]}}}}});
   const parts=[["Mood",d.mood*wt("mood"),K.pink],["Sleep",d.sleep*wt("sleep"),K.teal],["Activity",d.steps*wt("steps"),K.orange],["Screen time",d.screen*wt("screen"),K.blue]],tot=parts.reduce((a,p)=>a+p[1],0);
   mk("cWhy",{type:"doughnut",data:{labels:parts.map(p=>p[0]),datasets:[{data:tot?parts.map(p=>+(p[1]/tot*100).toFixed(1)):[1,1,1,1],backgroundColor:parts.map(p=>p[2]),borderColor:paper,borderWidth:4}]},
     options:{maintainAspectRatio:false,cutout:"58%",plugins:{legend:leg,tooltip:{callbacks:{label:c=>`${c.label}: ${tot?c.parsed+"%":"no change"}`}}}}});
-  const cnt={Low:0,Moderate:0,High:0};scores.forEach(s=>cnt[level(s)]++);
+  const cnt={Low:0,Moderate:0,High:0};scores.forEach(s=>{if(s!=null)cnt[level(s)]++;});
   mk("cPie",{type:"pie",data:{labels:Object.keys(cnt).map(k=>`${LV[k][0]} (${cnt[k]})`),datasets:[{data:Object.values(cnt),backgroundColor:[K.teal,K.yel,K.pink],borderColor:paper,borderWidth:4}]},options:{maintainAspectRatio:false,plugins:{legend:leg}}});
   mk("cMood",{type:"line",data:{labels,datasets:[{label:"Your mood",data:data.mood,borderColor:K.pink,backgroundColor:K.pink,tension:.35,borderWidth:4,pointRadius:5},
-    {label:"Your usual",data:labels.map(()=>base.mood),borderColor:ink,borderDash:[7,7],pointRadius:0,borderWidth:2}]},options:{maintainAspectRatio:false,scales:{y:{min:1,max:5,ticks:{stepSize:1},grid:{color:gr}},x},plugins:{legend:leg}}});
-  // Demo-only stress signal estimated from sample data; replace with real per-day model outputs.
-  const demoStress=labels.map((_,i)=>Math.round(Math.min(100,Math.max(0,
-    35 + Math.max(0,data.screen[i]-base.screen)*12
-       + Math.max(0,base.mood-data.mood[i])*10
-       + Math.max(0,base.sleep-data.sleep[i])*4
-  ))));
+    {label:"Your usual",data:flat(base.mood),borderColor:ink,borderDash:[7,7],pointRadius:0,borderWidth:2}]},options:{maintainAspectRatio:false,scales:{y:{min:1,max:5,ticks:{stepSize:1},grid:{color:gr}},x},plugins:{legend:leg}}});
+  // Stress line = average model probability of that day's analysed journal entries (real, per user)
+  const stress=keys.map(k=>{const p=entries.filter(e=>e.date===k&&typeof e.p==="number").map(e=>e.p);return p.length?Math.round(av(p)):null;});
   mk("cScreenStress",{type:"line",data:{labels,datasets:[
     {label:"Screen time (hours)",data:data.screen,borderColor:K.blue,backgroundColor:"rgba(122,92,196,.12)",yAxisID:"y",tension:.3,borderWidth:3,pointRadius:3},
-    {label:"Illustrative stress signal (0–100)",data:demoStress,borderColor:K.pink,backgroundColor:"rgba(255,92,138,.10)",yAxisID:"y1",tension:.3,borderWidth:3,pointRadius:3}
+    {label:"Stress signal from your entries (0–100)",data:stress,borderColor:K.pink,backgroundColor:"rgba(255,92,138,.10)",yAxisID:"y1",tension:.3,borderWidth:3,pointRadius:4}
   ]},options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
-    scales:{x, y:{type:"linear",position:"left",title:{display:true,text:"Screen time (hours)"},grid:{color:gr},min:0},
-      y1:{type:"linear",position:"right",title:{display:true,text:"Illustrative stress signal (0–100)"},min:0,max:100,grid:{drawOnChartArea:false}}},
-    plugins:{legend:leg}}});
+    scales:{x,y:{type:"linear",position:"left",title:{display:true,text:"Screen time (hours)"},grid:{color:gr},min:0},
+      y1:{type:"linear",position:"right",title:{display:true,text:"Stress signal (0–100)"},min:0,max:100,grid:{drawOnChartArea:false}}},plugins:{legend:leg}}});
   const h=HAB[habit],bv=base[habit];
-  mk("cHab",{type:"bar",data:{labels,datasets:[{label:h[0],data:data[habit],backgroundColor:data[habit].map(v=>(h[2]==="low"?v<bv*.88:v>bv*1.12)?K.pink:h[1]),borderRadius:4},
-    {type:"line",label:"Your usual",data:labels.map(()=>bv),borderColor:ink,borderDash:[7,7],pointRadius:0,borderWidth:2}]},options:{maintainAspectRatio:false,scales:{y:{grid:{color:gr}},x},plugins:{legend:leg}}});
-  const ks=["mood","sleep","steps","screen"],avg=(a,s,e)=>a.slice(s,e).reduce((p,q)=>p+q,0)/(e-s),pct=(k,s,e)=>Math.round(avg(data[k],s,e)/base[k]*100);
+  mk("cHab",{type:"bar",data:{labels,datasets:[{label:h[0],data:data[habit],backgroundColor:data[habit].map(v=>v==null?h[1]:(h[2]==="low"?v<bv*.88:v>bv*1.12)?K.pink:h[1]),borderRadius:4},
+    {type:"line",label:"Your usual",data:flat(bv),borderColor:ink,borderDash:[7,7],pointRadius:0,borderWidth:2}]},options:{maintainAspectRatio:false,scales:{y:{grid:{color:gr}},x},plugins:{legend:leg}}});
+  const ks=["mood","sleep","steps","screen"],avg=(a,s,e)=>{const v=a.slice(s,e).filter(q=>q!=null);return v.length?av(v):null;},pct=(k,s,e)=>{const m=avg(data[k],s,e);return m==null?null:Math.round(m/base[k]*100);};
   mk("cWk",{type:"bar",data:{labels:["Mood","Sleep","Activity","Screen time"],datasets:[{label:"Last week",data:ks.map(k=>pct(k,0,7)),backgroundColor:K.yel,borderRadius:4},{label:"This week",data:ks.map(k=>pct(k,7,14)),backgroundColor:K.blue,borderRadius:4}]},
     options:{maintainAspectRatio:false,scales:{y:{grid:{color:gr}},x:{grid:{display:false}}},plugins:{legend:leg}}});
 }
@@ -420,7 +484,7 @@ const POS=["happy","calm","good","great","grateful","excited","relax","hopeful",
 // SAFETY: have a trained counsellor review these phrases and the message before real use.
 const SAFETY={status:"Not yet reviewed by a counsellor",phrases:["suicid","kill myself","end my life","want to die","hurt myself","self harm","self-harm","no reason to live","better off dead","don't want to live","आत्महत्या","मरना चाहता","मरना चाहती","जीना नहीं चाहता","जीना नहीं चाहती","खुद को खत्म","marna chahta","marna chahti","jeena nahi chahta"]};
 const CRISIS=SAFETY.phrases;
-const entries=[];let alerts=0,name="Shreya",bt=null,learnDay=14,lastLv="Low",lang="en",qk="phq";
+const entries=[];let alerts=0,name="friend",bt=null,learnDay=0,lastLv="Low",lang="en",qk="phq";const rem={on:false,t:"20:00",last:""};
 const CENTRE={email:""}; // put your counselling centre's email here
 const HI={"Good morning":"सुप्रभात","Good afternoon":"नमस्कार","Good evening":"शुभ संध्या","Overview":"अवलोकन","Daily check-in":"दैनिक चेक-इन","Screening":"स्क्रीनिंग","My journal":"मेरी डायरी","Support resources":"सहायता संसाधन","Campus view":"कैंपस दृश्य","Model results":"मॉडल परिणाम","My profile":"मेरी प्रोफ़ाइल","NAVIGATION":"नेविगेशन","Need support?":"सहायता चाहिए?","Explore resources →":"संसाधन देखें →","Sign out":"साइन आउट","Your personal wellbeing overview":"आपकी सेहत का निजी सार","Two minutes for how you feel":"आप कैसा महसूस करते हैं, इसके लिए दो मिनट","Two short questionnaires to cross-check":"मिलान के लिए दो छोटी प्रश्नावली","Your entries and patterns":"आपकी प्रविष्टियाँ और पैटर्न","People who can help, any time":"जो कभी भी मदद कर सकते हैं","Anonymous group trends":"गुमनाम समूह रुझान","How well the models performed":"मॉडल का प्रदर्शन","YOUR WELLBEING OVERVIEW":"आपकी सेहत का सार","+ Complete today’s check-in":"+ आज का चेक-इन पूरा करें","Your personal overview":"आपका निजी सार","↻ Refresh":"↻ ताज़ा करें","Check-ins recorded":"दर्ज चेक-इन","Average mood":"औसत मूड","Average sleep":"औसत नींद","Crisis alerts":"संकट अलर्ट","Your 14-day garden":"आपका 14 दिन का बगीचा","Wellbeing trends":"सेहत के रुझान","Sleep history":"नींद का इतिहास","What we noticed":"हमने क्या देखा","Rough":"कठिन","Low":"उदास","Okay":"ठीक","Good":"अच्छा","Great":"बहुत बढ़िया","How are you feeling today?":"आज आप कैसा महसूस कर रहे हैं?","Pick the word that fits best.":"जो शब्द सबसे ठीक बैठे, उसे चुनें।","Read my entry":"मेरी प्रविष्टि पढ़ें","People who can help":"जो मदद कर सकते हैं","In immediate danger":"तुरंत खतरे में","Book a conversation":"बातचीत बुक करें","Request appointment":"अपॉइंटमेंट का अनुरोध करें","Take one minute to breathe":"एक मिनट साँस लेने के लिए निकालें","Start":"शुरू करें","Stop":"रोकें","Breathe in":"साँस अंदर लें","Hold":"रुकें","Breathe out":"साँस बाहर छोड़ें","Ready when you are":"जब आप तैयार हों","Quick questionnaires":"त्वरित प्रश्नावली","See my score":"मेरा स्कोर देखें","About you":"आपके बारे में","Privacy":"गोपनीयता","Gentle reminders":"कोमल अनुस्मारक","Show my data":"मेरा डेटा दिखाएँ","Delete everything":"सब कुछ हटाएँ","Welcome to MindCare":"MindCare में आपका स्वागत है","Create my profile":"मेरी प्रोफ़ाइल बनाएँ","Tiny task for today":"आज का छोटा काम","TINY TASK FOR TODAY":"आज का छोटा काम","Your baseline is ready":"आपका सामान्य स्तर तैयार है","Still learning your normal":"आपका सामान्य अभी सीख रहे हैं","Clear skies":"साफ़ आसमान","Patchy clouds":"कहीं-कहीं बादल","Stormy for now":"फ़िलहाल तूफ़ानी","Today":"आज","Sleep":"नींद","Steps":"कदम","Screen time":"स्क्रीन टाइम","MindCare gives early, non-diagnostic guidance and does not replace professional care. Numbers shown are sample data until it is connected to your models.":"MindCare शुरुआती, गैर-नैदानिक मार्गदर्शन देता है और पेशेवर देखभाल का विकल्प नहीं है। दिखाए गए आँकड़े नमूना डेटा हैं, जब तक इसे आपके मॉडल से नहीं जोड़ा जाता।"};
 const TR=x=>lang==="hi"&&HI[x]||x;
@@ -433,8 +497,8 @@ function applyLang(){
 function render(){render0();applyLang();}
 function whyText(lv){
   if(learnDay<14)return"";
-  const a=k=>av(data[k].slice(-5)),P=[];
-  if(a("sleep")<base.sleep*.92)P.push(`Sleep averaged ${a("sleep").toFixed(1)} h over the last 5 days (your usual: ${base.sleep} h).`);
+  const a=k=>{const v=data[k].slice(-5).filter(x=>x!=null);return v.length?av(v):NaN;},P=[];
+  if(a("sleep")<base.sleep*.92)P.push(`Sleep averaged ${a("sleep").toFixed(1)} h over your last 5 check-ins (your usual: ${base.sleep} h).`);
   if(a("steps")<base.steps*.8)P.push(`Steps averaged ${Math.round(a("steps")).toLocaleString("en-IN")} a day (your usual: ${base.steps.toLocaleString("en-IN")}).`);
   if(a("screen")>base.screen*1.12)P.push(`Screen time averaged ${a("screen").toFixed(1)} h a day (your usual: ${base.screen} h).`);
   if(a("mood")<base.mood-.5)P.push(`Your mood averaged ${a("mood").toFixed(1)} out of 5 (your usual: ${base.mood}).`);
@@ -455,18 +519,10 @@ function renderQ(){
 }
 function scoreQ(){
   const a=qa[qk],Q=QS[qk];if(Q.items.some((_,i)=>a[i]===undefined)){toast("Please answer every question.");return;}
-  const sc=a.reduce((p,q)=>p+q,0),bi=Q.bands.findIndex(b=>sc<=b[0]),band=Q.bands[bi][1];qlast[qk]={score:sc,band};
+  const sc=a.reduce((p,q)=>p+q,0),bi=Q.bands.findIndex(b=>sc<=b[0]),band=Q.bands[bi][1];qlast[qk]={score:sc,band,date:dk(new Date())};save();
   const hi=bi>=2,ai=lastLv!=="Low";
   const cross=hi&&!ai?"Your answers suggest more strain than your daily signals show. Both matter, so please consider talking to someone.":hi&&ai?"Your answers and your daily signals point the same way. Please consider talking to a counsellor.":!hi&&ai?"Your answers look lighter than your daily signals. It may be worth keeping an eye on things.":"Your answers and your daily signals both look fairly steady.";
   $("qres").innerHTML=`<h3 style="margin-top:16px">${sc} · ${band}</h3><div class="bar"><div style="width:${sc/(qk==="phq"?27:21)*100}%;background:${bi>=2?K.pink:bi===1?K.yel:K.teal}"></div></div><p>${cross}</p><p class="cap">This is a screening score, not a diagnosis.</p>`+(qk==="phq"&&a[8]>0?`<div class="alert"><b>You don’t have to handle this alone.</b> Call Tele-MANAS on <a href="tel:14416">14416</a> any time. If you’re in immediate danger, call <a href="tel:112">112</a>.</div>`:"");
-}
-const DEPTS=[["Whole campus",240,[150,62,28]],["B.Tech CSE (AIML)",86,[55,22,9]],["BBA",64,[38,18,8]],["Design (small group)",7,[4,2,1]]],OFF=[-6,-4,-5,-2,0,3,2,0];
-function renderCampus(){
-  const[nm,n,c]=DEPTS[+($("dept").value||0)],hide=n<10;$("cohwrap").hidden=hide;
-  $("cstats").innerHTML=hide?`<div class="card"><b>Too few people to show safely.</b><p class="cap">Groups smaller than 10 are hidden so no one can be identified.</p></div>`:[["Students in this group",n,"Simulated for the demo",K.blue],["Checked in this week",Math.round(n*.78),"About 78% of the group",K.teal],["May need support",Math.round((c[1]+c[2])/n*100)+"%","Patchy clouds or stormy",K.pink]].map(x=>`<div class="card stat" style="--c:${x[3]}"><div class="lbl">${x[0]}</div><div class="num">${x[1]}</div><p class="cap">${x[2]}</p></div>`).join("");
-  if(hide)return;const ink=css("--ink"),b=(c[1]+c[2])/n*100;
-  mk("cCoh",{type:"pie",data:{labels:["Clear skies","Patchy clouds","Stormy for now"],datasets:[{data:c,backgroundColor:[K.teal,K.yel,K.pink],borderColor:css("--card"),borderWidth:3}]},options:{maintainAspectRatio:false,plugins:{legend:{position:"bottom",labels:{color:ink}}}}});
-  mk("cTr",{type:"line",data:{labels:["W1","W2","W3","W4","W5","W6","W7","W8"],datasets:[{label:"% needing support",data:OFF.map(o=>Math.max(0,+(b+o).toFixed(1))),borderColor:K.pink,backgroundColor:"rgba(255,92,138,.15)",fill:true,tension:.35,borderWidth:3}]},options:{maintainAspectRatio:false,scales:{y:{min:0,grid:{color:"rgba(120,135,170,.25)"}},x:{grid:{display:false}}},plugins:{legend:{display:false}}}});
 }
 function showModel(){
   let j;try{j=JSON.parse($("mj").value)}catch(e){toast("That isn’t valid JSON. Check the commas and quotes.");return;}
@@ -478,30 +534,19 @@ function showModel(){
   $("mtab").innerHTML=ok.map(([k,v])=>`<div class="row"><b>${esc(k)}</b><span>${keys.map(x=>x+": "+(typeof v[x]==="number"?(+sc(v[x]).toFixed(1))+"%":"–")).join(" · ")}</span></div>`).join("");
 }
 function init2(){
-  $("on_ok").onchange=e=>$("on_go").disabled=!e.target.checked;
-  $("on_go").onclick=()=>{name=$("on_name").value.trim()||"friend";$("pname").value=name;$("av").textContent=name[0].toUpperCase();
-    document.querySelectorAll("#onb [data-k]").forEach(c=>{on[c.dataset.k]=c.checked;});
-    document.querySelectorAll("#consent input").forEach(c=>c.checked=on[c.dataset.k]);
-    try{localStorage.setItem("mc_onb","1")}catch(e){}$("onb").hidden=true;render();toast("Welcome, "+name+".");};
   $("lang").onclick=()=>{lang=lang==="hi"?"en":"hi";document.documentElement.lang=lang;$("lang").textContent=lang==="hi"?"EN":"हिं";render();};
   $("qtabs").onclick=e=>{const b=e.target.closest(".tab");if(b){qk=b.dataset.k;renderQ();}};
   $("qlist").onchange=e=>{qa[qk][+e.target.name.slice(1)]=+e.target.value;};
   $("qgo").onclick=scoreQ;renderQ();
-  $("dept").innerHTML=DEPTS.map((d,i)=>`<option value="${i}">${d[0]} (${d[1]} students)</option>`).join("");$("dept").onchange=render;
   $("mgo").onclick=showModel;$("mfmt").onclick=()=>{$("mj").value='{\n  "mentalbert": {"accuracy": null, "precision": null, "recall": null, "f1": null},\n  "bilstm": {"accuracy": null, "precision": null, "recall": null, "f1": null}\n}';};
   const sf=()=>{$("sst").textContent=SAFETY.status;$("sph").innerHTML=SAFETY.phrases.map(p=>`<span style="border:1px solid var(--line);border-radius:99px;padding:2px 10px">${esc(p)}</span>`).join("");};sf();
   $("srb").onclick=()=>{const r=$("srv").value.trim();if(!r){toast("Add the reviewer’s name first.");return;}SAFETY.status="Reviewed by "+r+" on "+new Date().toLocaleDateString("en-IN");sf();};
-  $("bgo").onclick=()=>{const txt=`Hello, I would like to book a ${$("bsv").value.toLowerCase()} appointment. Preferred time: ${$("bwh").value.trim()||"flexible"}.${$("bnote").value.trim()?" Note: "+$("bnote").value.trim():""} (Sent via MindCare)`;
-    if(CENTRE.email){location.href="mailto:"+CENTRE.email+"?subject="+encodeURIComponent("Appointment request")+"&body="+encodeURIComponent(txt);}
-    else $("bres").innerHTML=`<p class="cap" style="margin-top:12px">Your centre’s email isn’t set up yet. Copy this message and send it to them:</p><textarea rows="3" readonly aria-label="Appointment request">${esc(txt)}</textarea>`;};
-  $("show").onclick=()=>{$("dump").value=JSON.stringify({name,consent:on,entries,questionnaires:qlast,daily:data,baseline:base},null,2);$("dump").hidden=false;$("cp").hidden=false;};
+  $("show").onclick=()=>{$("dump").value=JSON.stringify({name,consent:on,checkins:U.days,entries,questionnaires:qlast,baseline:base},null,2);$("dump").hidden=false;$("cp").hidden=false;};
   $("cp").onclick=()=>{navigator.clipboard.writeText($("dump").value).then(()=>toast("Copied."),()=>toast("Select the text and copy it."));};
   let arm=false;$("del").onclick=()=>{if(!arm){arm=true;$("del").textContent="Click again to confirm";setTimeout(()=>{arm=false;$("del").textContent="Delete everything";},4000);return;}
     arm=false;entries.length=0;qlast={};qa.phq=[];qa.gad=[];alerts=0;$("dump").value="";$("dump").hidden=true;$("cp").hidden=true;{const a=getAcc();try{delete a[localStorage.getItem("mc_sess")];putAcc(a);}catch(e){}}
     $("del").textContent="Delete everything";renderEntries();renderQ();render();signOut();toast("Everything was deleted, including your account.");};
-  $("ld").oninput=e=>{learnDay=+e.target.value;$("ldv").textContent=learnDay;render();};
-  const rem={on:false,t:"20:00",last:""};
-  $("remOn").onchange=e=>{rem.on=e.target.checked;if(rem.on)try{Notification.requestPermission()}catch(x){}};$("remT").onchange=e=>{rem.t=e.target.value;};
+  $("remOn").onchange=e=>{rem.on=e.target.checked;U.rem={on:rem.on,t:rem.t};save();if(rem.on)try{Notification.requestPermission()}catch(x){}};$("remT").onchange=e=>{rem.t=e.target.value;U.rem={on:rem.on,t:rem.t};save();};
   setInterval(()=>{if(!rem.on)return;const n=new Date(),hm=String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0");
     if(hm===rem.t&&rem.last!==n.toDateString()){rem.last=n.toDateString();const m="A quick check-in? A missed day never resets your streak.";toast(m);try{if(Notification.permission==="granted")new Notification("MindCare",{body:m})}catch(x){}}},20000);
   render();
@@ -509,14 +554,30 @@ function init2(){
 function renderGarden(sc14,d,lv){
   const C={Low:K.teal,Moderate:K.yel,High:K.pink};let g="";
   labels.forEach((l,i)=>{
-    const x=34+i*47,h=34+data.mood[i]*24,c=C[level(sc14[i])];
-    const pet=[0,1,2,3,4,5].map(k=>`<circle cx="${(Math.cos(k*1.047)*9).toFixed(1)}" cy="${(Math.sin(k*1.047)*9).toFixed(1)}" r="6.5" fill="${c}"/>`).join("");
-    g+=`<g transform="translate(${x} 176)"><g class="fl" style="animation-delay:${(-i*.37).toFixed(2)}s"><path d="M0 0V${-h}" stroke="${K.teal}" stroke-width="3" stroke-linecap="round" fill="none"/><ellipse cx="-9" cy="${-h*.4}" rx="9" ry="4" transform="rotate(-30 -9 ${-h*.4})" fill="${K.teal}" opacity=".7"/><g transform="translate(0 ${-h})">${pet}<circle r="5.5" fill="${i===13?"#14213d":"#fff"}"/></g></g><text y="18" text-anchor="middle" font-size="10" fill="currentColor" opacity=".6">${i===13?"today":i%2?"":l.slice(0,2)}</text></g>`;
+    const has=data.mood[i]!=null,x=34+i*47,h=has?34+data.mood[i]*24:14,c=!has?"var(--line)":sc14[i]==null?K.teal:C[level(sc14[i])];
+    const pet=has?[0,1,2,3,4,5].map(k=>`<circle cx="${(Math.cos(k*1.047)*9).toFixed(1)}" cy="${(Math.sin(k*1.047)*9).toFixed(1)}" r="6.5" fill="${c}"/>`).join("")+`<circle r="5.5" fill="${i===13?"#14213d":"#fff"}"/>`:`<circle r="5" fill="var(--line)"/>`;
+    g+=`<g transform="translate(${x} 176)"><g class="fl" style="animation-delay:${(-i*.37).toFixed(2)}s"><path d="M0 0V${-h}" stroke="${has?K.teal:"var(--line)"}" stroke-width="3" stroke-linecap="round" fill="none"/>${has?`<ellipse cx="-9" cy="${-h*.4}" rx="9" ry="4" transform="rotate(-30 -9 ${-h*.4})" fill="${K.teal}" opacity=".7"/>`:""}<g transform="translate(0 ${-h})">${pet}</g></g><text y="18" text-anchor="middle" font-size="10" fill="currentColor" opacity=".6">${i===13?"today":i%2?"":l.slice(0,2)}</text></g>`;
   });
   $("garden").innerHTML=`<svg viewBox="0 0 700 205" role="img" aria-label="A garden of 14 flowers, one for each day" style="color:var(--soft)"><path d="M8 176H692" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>${g}</svg>`;
   const T={sleep:["Wind down earlier","Put your phone away 30 minutes before bed tonight."],mood:["Reach out to one person","Message someone you trust, or write down one thing that went okay today."],steps:["Take a 10-minute walk","A short walk after your next meal is plenty."],screen:["One screen-free hour","Pick an hour this evening and leave your phone in another room."]};
-  const top=Object.entries(d).sort((a,b)=>b[1]-a[1])[0][0],t=lv==="Low"?["Keep your streak going","Name one thing you’re grateful for before you sleep tonight."]:T[top],n=14+entries.length;
+  const top=Object.entries(d).sort((a,b)=>b[1]-a[1])[0][0],n=Object.keys(U.days).length,
+    t=curIdx()<0?["Start with a check-in","Pick how you feel today. It takes under a minute."]:lv==="Low"?["Keep your streak going","Name one thing you’re grateful for before you sleep tonight."]:T[top];
   $("tip").innerHTML=`<div><p class="eyebrow">TINY TASK FOR TODAY</p><h3>${t[0]}</h3><p class="cap" style="font-size:14px">${t[1]}</p></div><div class="streak"><b>${n}</b><span>days checked in. A missed day never resets this.</span>${[3,7,14].map(m=>`<i class="${n>=m?"on":""}">${m}</i>`).join("")}</div>`;
+}
+function initSelf(){
+  let mm=1,mt=null,left=60;const f=t=>String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0");
+  const show=()=>{$("med_t").textContent=f(left);$("med_bar").style.width=(mt?(1-left/(mm*60))*100:0)+"%";};
+  const reset=()=>{clearInterval(mt);mt=null;left=mm*60;$("med_go").textContent="Start";show();};
+  $("med_dur").onclick=e=>{const b=e.target.closest(".tab");if(!b)return;mm=+b.dataset.m;document.querySelectorAll("#med_dur .tab").forEach(x=>x.setAttribute("aria-selected",x===b));reset();};
+  $("med_go").onclick=()=>{if(mt){reset();return;}left=mm*60;$("med_go").textContent="Stop";show();
+    mt=setInterval(()=>{left--;if(left<=0){reset();toast("Session complete. Well done.");return;}show();},1000);};
+  const gr=()=>document.querySelectorAll("#gr_list input"),cnt=()=>[...gr()].filter(c=>c.checked).length;
+  $("gr_list").onchange=()=>{const n=cnt();$("gr_n").textContent=n+" of 5";if(n===5)toast("Well done. Take one slow breath.");};
+  $("gr_reset").onclick=()=>{gr().forEach(c=>c.checked=false);$("gr_n").textContent="0 of 5";};
+  const P=["One good thing from today, however small.","Who helped you recently, even in a tiny way?","What is one thing your body did well today?","Name a place or moment that made you feel calm.","What is something you’re looking forward to?"];let pi=0;
+  $("gt_new").onclick=()=>{pi=(pi+1)%P.length;$("gt_p").textContent=P[pi];};
+  $("gt_save").onclick=()=>{const t=$("gt").value.trim();if(!t)return toast("Write a line first.");if(!ACC)return toast("Please log in first.");
+    entries.unshift({text:t,lv:"Gratitude note",c:K.teal,date:dk(new Date())});save();renderEntries();$("gt").value="";toast("Saved to My journal.");};
 }
 function breathe(){
   const orb=$("orb"),bl=$("bl");
@@ -527,15 +588,36 @@ function breathe(){
 }
 const av=a=>a.reduce((p,q)=>p+q,0)/a.length;
 function renderStats(){
-  const S=[["Check-ins recorded",14+entries.length,"This fortnight",K.blue],["Average mood",av(data.mood).toFixed(1),"Out of 5",K.pink],["Average sleep",av(data.sleep).toFixed(1)+" h","Per night",K.teal],["Crisis alerts",alerts,alerts?"Please see Support resources":"None so far",K.yel]];
+  const m=data.mood.filter(x=>x!=null),sl=data.sleep.filter(x=>x!=null);
+  const S=[["Check-ins recorded",Object.keys(U.days).length,"All time",K.blue],["Average mood",m.length?av(m).toFixed(1):"–","Out of 5, last 14 days",K.pink],["Average sleep",sl.length?av(sl).toFixed(1)+" h":"–","Per night, last 14 days",K.teal],["Crisis alerts",alerts,alerts?"Please see Support resources":"None so far",K.yel]];
   const SI=[`<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 3h6v3H9z"/>`,`<circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>`,`<path d="M21 13A9 9 0 1111 3a7 7 0 0010 10z"/>`,`<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>`];
   $("stats").innerHTML=S.map((x,i)=>`<div class="card stat" style="--c:${x[3]}"><div class="ic"><svg class="i" viewBox="0 0 24 24">${SI[i]}</svg></div><div class="lbl">${x[0]}</div><div class="num">${x[1]}</div><p class="cap">${x[2]}</p></div>`).join("");
 }
 function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("on"),2600);}
-function renderEntries(){$("entries").innerHTML=entries.length?entries.map(e=>`<div class="entry" style="--c:${e.c}"><b>${e.lv}</b><br>${esc(e.text)}</div>`).join(""):'<p class="cap">Nothing here yet.</p>';}
+function renderEntries(){$("entries").innerHTML=entries.length?entries.map(e=>`<div class="entry" style="--c:${e.c}"><b>${e.lv}</b> <span class="cap">${e.date||""}</span><br>${esc(e.text)}</div>`).join(""):'<p class="cap">Nothing here yet. Write your first one in Daily check-in.</p>';}
+function fillCheckin(){const r=U.days[dk(new Date())]||{};pendingMood=r.mood||null;$("ci_sleep").value=r.sleep??"";$("ci_steps").value=r.steps??"";$("ci_screen").value=r.screen??"";}
+function saveCheckin(){
+  if(!ACC)return toast("Please log in first.");
+  if(!pendingMood)return toast("Please pick how you feel first.");
+  const num=(id,max)=>{const t=$(id).value.trim();if(t==="")return undefined;const v=+t;return Number.isFinite(v)&&v>=0&&v<=max?v:NaN;};
+  const sl=num("ci_sleep",24),st=num("ci_steps",100000),sc=num("ci_screen",24);
+  if([sl,st,sc].some(v=>Number.isNaN(v)))return toast("Please check the numbers. Sleep and screen time are hours (0–24).");
+  const r={mood:pendingMood};if(sl!==undefined)r.sleep=sl;if(st!==undefined)r.steps=Math.round(st);if(sc!==undefined)r.screen=sc;
+  U.days[dk(new Date())]=r;save();render();toast("Check-in saved.");location.hash="overview";
+}
 async function analyse(){
   const raw=$("jt").value.trim();
   if(!raw)return toast("Please write a few lines first.");
+
+  // Safety check runs locally first, so it works even if the backend is down.
+  const low=raw.toLowerCase();
+  if(CRISIS.some(p=>low.includes(p.toLowerCase()))){
+    alerts++;
+    entries.unshift({text:raw,lv:"Crisis wording noticed",c:K.pink,date:dk(new Date())});save();
+    renderEntries();$("jt").value="";render();
+    $("res").innerHTML=`<div class="alert"><b>You don’t have to handle this alone.</b> Call Tele-MANAS on <a href="tel:14416">14416</a> any time. If you’re in immediate danger, call <a href="tel:112">112</a>.</div>`;
+    return;
+  }
 
   const button=$("go");
   button.disabled=true;
@@ -599,9 +681,10 @@ async function analyse(){
        <p><a href="#support">Explore support resources</a></p>`;
 
     // Journal entries remain local in this prototype; connect database storage separately.
-    entries.unshift({text:raw,lv:stressSignal?"Stress-related signal":"No strong stress signal",c:col});
+    entries.unshift({text:raw,lv:stressSignal?"Stress-related signal":"No strong stress signal",c:col,date:dk(new Date()),p:pct});save();
     renderEntries();
     $("jt").value="";
+    render();
   }catch(error){
     $("res").innerHTML=
       `<div class="alert"><b>Could not analyse your entry.</b>
@@ -615,28 +698,50 @@ async function analyse(){
 function build(){
   $("nav").innerHTML=ROUTES.map(r=>`<a href="#${r[0]}" data-r="${r[0]}"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[r[0]]}</svg><span>${r[1]}</span></a>`).join("");
   $("moods").innerHTML=MOODS.map(m=>`<button class="mood" data-v="${m[1]}" style="--c:${m[2]}"><i></i>${m[0]}</button>`).join("");
-  $("moods").onclick=e=>{const b=e.target.closest(".mood");if(b){data.mood[13]=+b.dataset.v;render();}};
+  $("moods").onclick=e=>{const b=e.target.closest(".mood");if(b){pendingMood=+b.dataset.v;render();}};
+  $("ci").onclick=saveCheckin;initSelf();
+  $("themeBtn").onclick=()=>{const nx=isDark()?"light":"dark";document.documentElement.dataset.theme=nx;U.theme=nx;save();document.querySelectorAll("#theme input").forEach(r=>r.checked=r.value===nx);render();};
+  document.querySelectorAll(".support-tile").forEach(t=>{const go=()=>$(t.dataset.go).scrollIntoView({behavior:"smooth",block:"start"});t.onclick=go;t.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}};});
   $("tabs").innerHTML=Object.keys(HAB).map(k=>`<button class="tab" role="tab" data-k="${k}">${HAB[k][0]}</button>`).join("");
   $("tabs").onclick=e=>{const b=e.target.closest(".tab");if(b){habit=b.dataset.k;render();}};
   const S=[["mood","Mood and what I write","Read by the text model"],["sleep","Sleep","Hours slept"],["steps","Activity","Daily steps"],["screen","Screen time","Hours on screen"]];
   $("consent").innerHTML=S.map(s=>`<label class="row2"><span><b>${s[1]}</b><br><small>${s[2]}</small></span><input type="checkbox" data-k="${s[0]}" checked></label>`).join("");
-  $("consent").onchange=e=>{on[e.target.dataset.k]=e.target.checked;render();};
-  $("theme").onchange=e=>{if(e.target.value==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=e.target.value;render();};
-  $("basetbl").innerHTML=[["Mood",base.mood+" of 5"],["Sleep",base.sleep+" hrs"],["Steps",base.steps.toLocaleString("en-IN")],["Screen time",base.screen+" hrs"]].map(r=>`<div class="row"><span>${r[0]}</span><b>${r[1]}</b></div>`).join("");
-  $("del").onclick=()=>{entries.length=0;renderEntries();$("delmsg").textContent="Your entries have been deleted.";};
+  $("consent").onchange=e=>{on[e.target.dataset.k]=e.target.checked;save();render();};
+  $("theme").onchange=e=>{if(e.target.value==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=e.target.value;U.theme=e.target.value;save();render();};
   $("go").onclick=analyse;$("bb").onclick=breathe;$("refresh").onclick=()=>{render();toast("Refreshed from your latest check-ins.");};
-  $("pname").oninput=e=>{name=e.target.value.trim()||"friend";$("av").textContent=name[0].toUpperCase();render();};
+  $("pname").oninput=e=>{name=e.target.value.trim()||"friend";$("av").textContent=name[0].toUpperCase();save();render();};
   $("bell").onclick=()=>{if($("bell").dataset.alert)location.hash="support";else toast("No new alerts. You’re all caught up.");};
   $("out").onclick=signOut;
-  $("search").onkeydown=e=>{if(e.key!=="Enter")return;const q=e.target.value.trim().toLowerCase(),r=ROUTES.find(x=>q&&x[3].includes(q));if(r){location.hash=r[0];e.target.value="";}else toast("No page matches that. Try “sleep” or “help”.");};
 }
 function route(){
   const r=location.hash.slice(1),R=ROUTES.find(x=>x[0]===r)||ROUTES[0];
   document.querySelectorAll(".page").forEach(p=>p.classList.toggle("on",p.id==="p-"+R[0]));
   document.querySelectorAll("#nav a").forEach(a=>a.setAttribute("aria-current",a.dataset.r===R[0]?"page":"false"));
-  $("ptitle").textContent=R[1];$("psub").textContent=R[2];scrollTo(0,0);render();
+  $("ptitle").textContent=R[1];$("psub").textContent=R[2];scrollTo(0,0);if(R[0]==="checkin")fillCheckin();render();
 }
-build();addEventListener("hashchange",route);
+build();
+const psychForm=document.getElementById("psychSearchForm");
+const mapsLink=document.getElementById("mapsSearchLink");
+const psychMessage=document.getElementById("psychMessage");
+function showMapSearch(query){
+  const q=(query||"psychiatrists near me").trim();
+  mapsLink.href="https://www.google.com/maps/search/"+encodeURIComponent("psychiatrists near "+q);
+  mapsLink.hidden=false;
+  psychMessage.textContent="We’ll show current clinic and professional listings for: "+q+". Google Maps will open in a new tab.";
+}
+if(psychForm){psychForm.addEventListener("submit",e=>{e.preventDefault();const q=document.getElementById("psychLocation").value.trim();if(!q){psychMessage.textContent="Please enter a city or PIN code, or choose Use my location.";mapsLink.hidden=true;return;}showMapSearch(q);});}
+const locationButton=document.getElementById("useMyLocation");
+if(locationButton){locationButton.addEventListener("click",()=>{
+  if(!navigator.geolocation){psychMessage.textContent="Location is not supported by this browser. Please enter your city or PIN code.";return;}
+  psychMessage.textContent="Requesting your location permission…";
+  navigator.geolocation.getCurrentPosition(pos=>{
+    const coords=pos.coords.latitude+","+pos.coords.longitude;
+    mapsLink.href="https://www.google.com/maps/search/psychiatrists/@"+coords+",14z";
+    mapsLink.hidden=false;
+    psychMessage.textContent="Location found. Open Google Maps to see nearby psychiatrist listings.";
+  },()=>{psychMessage.textContent="Location access was not granted. Please enter your city or PIN code instead.";},{enableHighAccuracy:false,timeout:10000,maximumAge:300000});
+});}
+addEventListener("hashchange",route);
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change",render);
 route();init2();
 // ---------- Login and sign up (demo: accounts live in this browser only) ----------
@@ -653,16 +758,22 @@ function setMode(m){
   $("asub").textContent=su?"It takes a minute. You can change what’s shared any time.":"Log in to see your overview.";
   $("ago").textContent=su?"Create account":"Log in";$("ap").autocomplete=su?"new-password":"current-password";
 }
-function meter(){
-  const p=$("ap").value;let n=0;if(p.length>=8)n++;if(p.length>=12)n++;if(/[A-Z]/.test(p)&&/[a-z]/.test(p))n++;if(/\d/.test(p))n++;if(/[^A-Za-z0-9]/.test(p))n++;
-  const f=$("mfill");f.style.width=(p?Math.max(12,n*20):0)+"%";f.style.background=n<3?K.pink:n<4?K.yel:K.teal;
-  $("mtxt").textContent=!p?"Use 8 or more characters, with letters and a number.":n<3?"Weak. Try a longer password.":n<4?"Okay. Adding a symbol or more length helps.":"Strong.";
+function loadUser(em){
+  const a=getAcc()[em];if(!a)return;ACC=em;name=a.name;U=Object.assign(blank(),a.u||{});
+  Object.assign(on,{mood:true,sleep:true,steps:true,screen:true},U.on||{});U.on=on;
+  entries.length=0;entries.push(...(U.entries||[]));U.entries=entries;U.days=U.days||{};U.q=U.q||{};qlast=U.q;alerts=U.alerts||0;qa.phq=[];qa.gad=[];
+  $("pname").value=name;$("av").textContent=name[0].toUpperCase();
+  document.querySelectorAll("#consent input").forEach(c=>c.checked=on[c.dataset.k]);
+  const th=U.theme||"auto";if(th==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=th;
+  document.querySelectorAll("#theme input").forEach(r=>r.checked=r.value===th);
+  rem.on=!!(U.rem&&U.rem.on);rem.t=(U.rem&&U.rem.t)||"20:00";$("remOn").checked=rem.on;$("remT").value=rem.t;
+  renderEntries();renderQ();fillCheckin();
 }
 function enter(em,nm,first){
-  name=nm;$("pname").value=nm;$("av").textContent=nm[0].toUpperCase();
+  loadUser(em);
   try{localStorage.setItem("mc_sess",em);}catch(e){}
-  ["ae","ap","ac","an"].forEach(i=>$(i).value="");$("aok").checked=false;meter();
-  $("auth").hidden=true;scrollTo(0,0);render();if(first){$("on_name").value=nm;$("onb").hidden=false;$("on_name").focus();}else toast("Welcome back, "+nm+".");
+  ["ae","ap","an"].forEach(i=>$(i).value="");$("aok").checked=false;
+  $("auth").hidden=true;scrollTo(0,0);render();toast(first?"Welcome, "+nm+".":"Welcome back, "+nm+".");
 }
 async function submit(e){
   e.preventDefault();const err=m=>{$("aerr").textContent=m;};err("");
@@ -674,7 +785,7 @@ async function submit(e){
       const nm=$("an").value.trim();
       if(!nm)return err("Please tell us what to call you.");
       if(pw.length<8||!/[A-Za-z]/.test(pw)||!/\d/.test(pw))return err("Use at least 8 characters, with letters and a number.");
-      if(pw!==$("ac").value)return err("The two passwords don’t match.");
+      
       if(!$("aok").checked)return err("Please tick the box to continue.");
       if(acc[em])return err("There’s already an account with that email. Try logging in.");
       const salt=hex(crypto.getRandomValues(new Uint8Array(8)));
@@ -687,17 +798,18 @@ async function submit(e){
   }catch(x){err("Something went wrong. Please try again.");}
 }
 function signOut(){
-  try{localStorage.removeItem("mc_sess");}catch(e){}
+  save();try{localStorage.removeItem("mc_sess");}catch(e){}
+  U=blank();ACC=null;Object.assign(on,U.on);U.on=on;entries.length=0;U.entries=entries;qlast=U.q;alerts=0;pendingMood=null;name="friend";$("pname").value="";$("dump").hidden=true;$("cp").hidden=true;renderEntries();renderQ();render();
   $("auth").hidden=false;setMode("login");location.hash="";$("ae").focus();
 }
 function authInit(){
   $("tLogin").onclick=()=>setMode("login");$("tSign").onclick=()=>setMode("signup");
-  $("af").onsubmit=submit;$("ap").oninput=meter;
-  $("aeye").onclick=()=>{const h=$("ap").type==="password";$("ap").type=h?"text":"password";$("ac").type=h?"text":"password";$("aeye").textContent=h?"Hide":"Show";};
+  $("af").onsubmit=submit;
+  $("aeye").onclick=()=>{const h=$("ap").type==="password";$("ap").type=h?"text":"password";$("aeye").textContent=h?"Hide":"Show";};
   $("afg").onclick=e=>{e.preventDefault();toast("Demo only. The real app would email you a reset link.");};
   let sess=null;try{sess=localStorage.getItem("mc_sess");}catch(e){}
   const a=getAcc()[sess];
-  if(sess&&a){name=a.name;$("pname").value=a.name;$("av").textContent=a.name[0].toUpperCase();$("auth").hidden=true;render();}
+  if(sess&&a){loadUser(sess);$("auth").hidden=true;render();}
 }
 authInit();
 
